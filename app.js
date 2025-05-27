@@ -6,7 +6,7 @@ app.get("/",function(request, response){
     // response.send("this is home page")
 })
 app.get("/about",function(request, response){
-    response.render("hello/hi.ejs")
+    response.render("about.ejs")
 })
 app.listen(3000,function(){
     console.log("backend has starated at port 3000")
