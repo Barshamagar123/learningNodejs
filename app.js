@@ -1,5 +1,6 @@
 const express = require('express')
 const app=express()
+require("./database/db")
 app.set("view engine", "ejs")//tells express js to set environment for ejs to run
 app.get("/",function(request, response){
     let name="barsha"

@@ -1,2 +1,32 @@
 const {Sequelize} = require("sequelize")
-const sequelize = new sequelize() // making object form sequelize class
+require("dotenv").config() //yo gare paxi only hami dotenv ko data haru yo file ma access garnamilxa
+const sequelize = new Sequelize(
+    {
+        database: process.env.database_name,
+        username: process.env.database_username,
+        password: process.env.database_password,
+        port: 3306,
+        host: process.env.database_host,
+        dialect: "mysql"
+        // database: "runningnodejs",
+        // username: "root",
+        // password: "",
+        // port : "3306",
+        // host: "localhost",
+        // dialect: "mysql"  //kun database use gareko xa teskei name
+    }
+) // making object form sequelize class
+// sequelize connect huna try gar banera vannu parxa
+sequelize.authenticate()
+.then(()=>{
+    console.log("connected succesfully")
+})
+.catch((err)=>{
+    console.log("error aayo",err)
+})
+//yo sab mathi database connection vayo
+
+// for exporting
+// let name="barsha"
+// module.exports= name
+module.exports = sequelize
