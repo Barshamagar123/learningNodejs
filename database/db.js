@@ -1,5 +1,6 @@
-const {Sequelize} = require("sequelize")
+const {Sequelize,DataTypes} = require("sequelize")
 require("dotenv").config() //yo gare paxi only hami dotenv ko data haru yo file ma access garnamilxa
+// const makeBlogTable=require("./../models/blogModel")
 const sequelize = new Sequelize(
     {
         database: process.env.database_name,
@@ -29,4 +30,13 @@ sequelize.authenticate()
 // for exporting
 // let name="barsha"
 // module.exports= name
+
+const db={}
+// db.name="barsha"
+db.blogs=require("./../models/blogModel")(sequelize,DataTypes)
+db.products=require("./../models/productModel")(sequelize,DataTypes)
+// db.users=require("./../models/userModel")(sequelize,DataTypes)
+sequelize.sync({alter:true}).then(()=>{
+    console.log("migrated succesfully")
+})
 module.exports = sequelize
