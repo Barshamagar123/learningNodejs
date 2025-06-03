@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tasks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Header -->
+        <header class="mb-8 flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-indigo-700">All Tasks</h1>
+            <a href="/add-todo" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center gap-2">
+                <i class="fas fa-plus"></i> New Task
+            </a>
+        </header>
+
+        <!-- Filters -->
+        <div class="bg-white p-4 rounded-xl shadow mb-6">
+            <div class="flex flex-wrap items-center gap-4">
+                <select class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                    <option>All Status</option>
+                    <option>Completed</option>
+                    <option>Pending</option>
+                </select>
+                <select class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                    <option>All Priorities</option>
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
+                </select>
+                <button class="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 flex items-center gap-2">
+                    <i class="fas fa-filter"></i> Apply
+                </button>
+                <button class="p-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 ml-auto">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Task List -->
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+            <!-- Table Header -->
+            <div class="grid grid-cols-12 bg-gray-100 p-4 font-medium text-gray-700">
+                <div class="col-span-1">Status</div>
+                <div class="col-span-5">Task</div>
+                <div class="col-span-2">Due Date</div>
+                <div class="col-span-2">Priority</div>
+                <div class="col-span-2">Actions</div>
+            </div>
+
+            <!-- Task Items -->
+            <div class="divide-y divide-gray-200">
+                <!-- Completed Task -->
+                <div class="grid grid-cols-12 p-4 items-center hover:bg-gray-50 transition-colors">
+                    <div class="col-span-1">
+                        <button class="w-5 h-5 rounded-full border-2 border-green-500 flex items-center justify-center bg-green-100">
+                            <i class="fas fa-check text-green-600 text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="col-span-5">
+                        <p class="font-medium line-through text-gray-500">Complete project proposal</p>
+                        <p class="text-xs text-gray-400 mt-1">Design and submit the client proposal</p>
+                    </div>
+                    <div class="col-span-2 text-sm text-gray-500">Today, 5:00 PM</div>
+                    <div class="col-span-2">
+                        <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">High</span>
+                    </div>
+                    <div class="col-span-2 flex space-x-3">
+                        <a href="/update-todo/1" class="text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <button class="text-red-600 hover:text-red-800">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pending Task -->
+                <div class="grid grid-cols-12 p-4 items-center hover:bg-gray-50 transition-colors">
+                    <div class="col-span-1">
+                        <button class="w-5 h-5 rounded-full border-2 border-gray-300 hover:border-indigo-500"></button>
+                    </div>
+                    <div class="col-span-5">
+                        <p class="font-medium">Review team tasks</p>
+                        <p class="text-xs text-gray-400 mt-1">Weekly sprint planning</p>
+                    </div>
+                    <div class="col-span-2 text-sm text-gray-500">Tomorrow, 10:00 AM</div>
+                    <div class="col-span-2">
+                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Medium</span>
+                    </div>
+                    <div class="col-span-2 flex space-x-3">
+                        <a href="/update-todo/2" class="text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <button class="text-red-600 hover:text-red-800">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Overdue Task -->
+                <div class="grid grid-cols-12 p-4 items-center hover:bg-gray-50 transition-colors">
+                    <div class="col-span-1">
+                        <button class="w-5 h-5 rounded-full border-2 border-gray-300 hover:border-indigo-500"></button>
+                    </div>
+                    <div class="col-span-5">
+                        <p class="font-medium">Send client report</p>
+                        <p class="text-xs text-gray-400 mt-1">Q2 performance metrics</p>
+                    </div>
+                    <div class="col-span-2 text-sm text-red-500 flex items-center gap-1">
+                        <i class="fas fa-exclamation-circle"></i> Yesterday
+                    </div>
+                    <div class="col-span-2">
+                        <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">Urgent</span>
+                    </div>
+                    <div class="col-span-2 flex space-x-3">
+                        <a href="/update-todo/3" class="text-indigo-600 hover:text-indigo-800">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <button class="text-red-600 hover:text-red-800">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="bg-gray-50 px-4 py-3 flex items-center justify-between border-t border-gray-200">
+                <div class="text-sm text-gray-500">
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">3</span> of <span class="font-medium">15</span> tasks
+                </div>
+                <div class="flex space-x-2">
+                    <button class="px-3 py-1 border border-gray-300 rounded-md text-gray-500 hover:bg-gray-100">
+                        Previous
+                    </button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-md bg-indigo-600 text-white">
+                        1
+                    </button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100">
+                        2
+                    </button>
+                    <button class="px-3 py-1 border border-gray-300 rounded-md hover:bg-gray-100">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Todo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12 max-w-2xl">
+        <!-- Header -->
+        <header class="mb-8 flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-indigo-700">Add New Task</h1>
+            <a href="./home.ejs" class="text-gray-500 hover:text-indigo-600">
+                <i class="fas fa-times text-xl"></i>
+            </a>
+        </header>
+
+        <!-- Form -->
+        <form class="bg-white p-6 rounded-xl shadow">
+            <div class="space-y-5">
+                <!-- Task Title -->
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Task Title</label>
+                    <input type="text" placeholder="e.g., Finish project report" 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Description</label>
+                    <textarea rows="3" placeholder="Add details..." 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+
+                <!-- Due Date & Priority -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Due Date</label>
+                        <input type="date" 
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Priority</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                            <option>Low</option>
+                            <option selected>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tags -->
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Tags</label>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Work</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Personal</span>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200">+ Add</button>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" 
+                    class="w-full py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium mt-5">
+                    Save Task
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

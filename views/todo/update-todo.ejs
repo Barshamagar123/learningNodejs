@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12 max-w-2xl">
+        <!-- Header -->
+        <header class="mb-8 flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-indigo-700">Edit Task</h1>
+                <p class="text-gray-500">Update task details</p>
+            </div>
+            <a href="/todos" class="text-gray-500 hover:text-indigo-600 text-xl">
+                <i class="fas fa-times"></i>
+            </a>
+        </header>
+
+        <!-- Form -->
+        <form class="bg-white p-6 rounded-xl shadow">
+            <div class="space-y-5">
+                <!-- Task Title -->
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Task Title*</label>
+                    <input type="text" value="Review team tasks" 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        required>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label class="block text-gray-700 mb-2 font-medium">Description</label>
+                    <textarea rows="3" 
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">Discuss the upcoming project milestones and assign tasks to team members.</textarea>
+                </div>
+
+                <!-- Due Date & Priority -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Due Date*</label>
+                        <input type="datetime-local" value="2023-12-15T10:00" 
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Priority*</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                            <option>Low</option>
+                            <option selected>Medium</option>
+                            <option>High</option>
+                            <option>Urgent</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Status & Category -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Status</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                            <option>Pending</option>
+                            <option>In Progress</option>
+                            <option>Completed</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Category</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                            <option>Work</option>
+                            <option>Personal</option>
+                            <option>Study</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-5">
+                    <button type="submit" 
+                        class="flex-1 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium flex items-center justify-center gap-2">
+                        <i class="fas fa-save"></i> Update Task
+                    </button>
+                    <a href="/todos" 
+                        class="flex-1 py-3 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium flex items-center justify-center gap-2">
+                        <i class="fas fa-times"></i> Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
