@@ -3,54 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-            <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <title>Register - Todo App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    
-  <div class="max-w-lg mx-auto  bg-white dark:bg-gray-800 rounded-lg shadow-md px-8 py-10 flex flex-col items-center">
-    <h1 class="text-xl font-bold text-center text-gray-700 dark:text-gray-200 mb-8">Welcome to My Company</h1>
-    <form action="#" class="w-full flex flex-col gap-4">
-      <div class="flex items-start flex-col justify-start">
-        <label for="firstName" class="text-sm text-gray-700 dark:text-gray-200 mr-2">First Name:</label>
-        <input type="text" id="firstName" name="firstName" class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-      </div>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <!-- Logo/App Name -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-indigo-600 dark:text-indigo-400">Todo App</h1>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">Organize your life, one task at a time</p>
+        </div>
 
-      <div class="flex items-start flex-col justify-start">
-        <label for="lastName" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-      </div>
+        <!-- Registration Card -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+            <div class="p-8">
+                <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Create your account</h2>
+                
+                <form class="space-y-5">
+                    <!-- Name Fields (side by side on larger screens) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required 
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required 
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                        </div>
+                    </div>
 
-      <div class="flex items-start flex-col justify-start">
-        <label for="username" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Username:</label>
-        <input type="text" id="username" name="username" class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-      </div>
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" required 
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                    </div>
 
-      <div class="flex items-start flex-col justify-start">
-        <label for="email" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Email:</label>
-        <input type="email" id="email" name="email" class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-      </div>
+                    <!-- Password Fields -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+                        <input type="password" id="password" name="password" required 
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                    </div>
+                    <div>
+                        <label for="confirmPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required 
+                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition">
+                    </div>
 
-      <div class="flex items-start flex-col justify-start">
-        <label for="password" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Password:</label>
-        <input type="password" id="password" name="password" class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-      </div>
+                    <!-- Submit Button -->
+                    <button type="submit" 
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg shadow-sm transition duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
+                        Create Account
+                    </button>
+                </form>
 
-      <div class="flex items-start flex-col justify-start">
-        <label for="confirmPassword" class="text-sm text-gray-700 dark:text-gray-200 mr-2">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" class="w-full px-3 dark:text-gray-200 dark:bg-gray-900 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500">
-      </div>
+                <!-- Divider -->
+                <div class="flex items-center my-6">
+                    <div class="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
+                    <span class="mx-4 text-gray-500 dark:text-gray-400 text-sm">OR</span>
+                    <div class="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
+                </div>
 
-      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-sm">Register</button>
-    </form>
+                <!-- Social Login Options -->
+                <div class="grid grid-cols-2 gap-3">
+                    <button type="button" 
+                            class="flex items-center justify-center gap-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white py-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0110 4.844c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.933.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.14 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+                        </svg>
+                        GitHub
+                    </button>
+                    <button type="button" 
+                            class="flex items-center justify-center gap-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white py-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                        </svg>
+                        Twitter
+                    </button>
+                </div>
+            </div>
 
-    <div class="mt-4 text-center">
-      <span class="text-sm text-gray-500 dark:text-gray-300">Already have an account? </span>
-      <a href="#" class="text-blue-500 hover:text-blue-600">Login</a>
+            <!-- Footer with login link -->
+            <div class="bg-gray-50 dark:bg-gray-700 px-8 py-4 text-center">
+                <p class="text-gray-600 dark:text-gray-300 text-sm">
+                    Already have an account? 
+                    <a href="/login" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium">Sign in</a>
+                </p>
+            </div>
+        </div>
     </div>
-    </form>
-  </div>
-
 </body>
 </html>
