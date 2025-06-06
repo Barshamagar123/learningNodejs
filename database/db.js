@@ -42,3 +42,4 @@ sequelize.sync({alter:true}).then(()=>{
     console.log("migrated succesfully")
 })
 module.exports = sequelize
+module.exports=db
