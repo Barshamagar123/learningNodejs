@@ -37,6 +37,7 @@ db.blogs=require("./../models/blogModel")(sequelize,DataTypes)
 db.products=require("./../models/productModel")(sequelize,DataTypes)
 db.registers=require("./../models/registerModel")(sequelize,DataTypes)
 db.logins=require("./../models/loginModel")(sequelize,DataTypes)
+db.adds=require("./../models/addModel.js")(sequelize,DataTypes)
 // db.users=require("./../models/userModel")(sequelize,DataTypes)
 sequelize.sync({alter:true}).then(()=>{
     console.log("migrated succesfully")

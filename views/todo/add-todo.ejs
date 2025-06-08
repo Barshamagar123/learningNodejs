@@ -17,19 +17,19 @@
         </header>
 
         <!-- Form -->
-        <form class="bg-white p-6 rounded-xl shadow">
+        <form class="bg-white p-6 rounded-xl shadow" method="post" action="/add-todo">
             <div class="space-y-5">
                 <!-- Task Title -->
                 <div>
                     <label class="block text-gray-700 mb-2 font-medium">Task Title</label>
-                    <input type="text" placeholder="e.g., Finish project report" 
+                    <input type="text" name="task" placeholder="e.g., Finish project report" 
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                 </div>
 
                 <!-- Description -->
                 <div>
                     <label class="block text-gray-700 mb-2 font-medium">Description</label>
-                    <textarea rows="3" placeholder="Add details..." 
+                    <textarea rows="3" name="description" placeholder="Add details..." 
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"></textarea>
                 </div>
 
@@ -37,12 +37,12 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                         <label class="block text-gray-700 mb-2 font-medium">Due Date</label>
-                        <input type="date" 
+                        <input type="date" name="date"
                             class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
                     </div>
                     <div>
                         <label class="block text-gray-700 mb-2 font-medium">Priority</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                        <select name="priority" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
                             <option>Low</option>
                             <option selected>Medium</option>
                             <option>High</option>
@@ -52,7 +52,7 @@
 
                 <!-- Tags -->
                 <div>
-                    <label class="block text-gray-700 mb-2 font-medium">Tags</label>
+                    <label name="tag" class="block text-gray-700 mb-2 font-medium">Tags</label>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Work</span>
                         <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Personal</span>

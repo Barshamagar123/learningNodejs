@@ -56,6 +56,17 @@ app.post("/login-todo",async(request,response)=>{
     })
     response.send("login succesfully")
 })
+app.post("/add-todo",async(request,response)=>{
+    const {task,description,date,priority,tag}=request.body
+    await db.adds.create({
+        task: task,
+        description:description,
+        date:date,
+        priority: priority,
+        tag: tag
+    })
+    response.render("home.ejs")
+})
 app.listen(3000,function(){
     console.log("backend has starated at port 3000")
 })
