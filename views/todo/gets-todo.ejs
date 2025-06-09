@@ -50,23 +50,20 @@
                 <div class="col-span-2">Priority</div>
                 <div class="col-span-2">Actions</div>
             </div>
-
-            <!-- Task Items -->
-            <div class="divide-y divide-gray-200">
-                <!-- Completed Task -->
+                     <% todos.forEach(function(add){ %>
+                <!-- Pending Task -->
                 <div class="grid grid-cols-12 p-4 items-center hover:bg-gray-50 transition-colors">
+
                     <div class="col-span-1">
-                        <button class="w-5 h-5 rounded-full border-2 border-green-500 flex items-center justify-center bg-green-100">
-                            <i class="fas fa-check text-green-600 text-xs"></i>
-                        </button>
+                        <button class="w-5 h-5 rounded-full border-2 border-gray-300 hover:border-indigo-500"></button>
                     </div>
                     <div class="col-span-5">
-                        <p class="font-medium line-through text-gray-500">Complete project proposal</p>
-                        <p class="text-xs text-gray-400 mt-1">Design and submit the client proposal</p>
+                        <p class="font-medium"><%- add.task %></p>
+                        <p class="text-xs text-gray-400 mt-1"><%- add.description %></p>
                     </div>
-                    <div class="col-span-2 text-sm text-gray-500">Today, 5:00 PM</div>
+                    <div class="col-span-2 text-sm text-gray-500"><% add.date %></div>
                     <div class="col-span-2">
-                        <span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">High</span>
+                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Medium</span>
                     </div>
                     <div class="col-span-2 flex space-x-3">
                         <a href="/update-todo" class="text-indigo-600 hover:text-indigo-800">
@@ -80,61 +77,10 @@
                         </button>
                     </div>
                 </div>
+           <% }) %>
 
-                <!-- Pending Task -->
-                <div class="grid grid-cols-12 p-4 items-center hover:bg-gray-50 transition-colors">
-                    <div class="col-span-1">
-                        <button class="w-5 h-5 rounded-full border-2 border-gray-300 hover:border-indigo-500"></button>
-                    </div>
-                    <div class="col-span-5">
-                        <p class="font-medium">Review team tasks</p>
-                        <p class="text-xs text-gray-400 mt-1">Weekly sprint planning</p>
-                    </div>
-                    <div class="col-span-2 text-sm text-gray-500">Tomorrow, 10:00 AM</div>
-                    <div class="col-span-2">
-                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Medium</span>
-                    </div>
-                    <div class="col-span-2 flex space-x-3">
-                        <a href="/update-todo/2" class="text-indigo-600 hover:text-indigo-800">
-                            <i class="fas fa-pen"></i>
-                        </a>
-                        <button class="text-red-600 hover:text-red-800">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                        <button class="text-gray-500 hover:text-gray-700">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Overdue Task -->
-                <div class="grid grid-cols-12 p-4 items-center hover:bg-gray-50 transition-colors">
-                    <div class="col-span-1">
-                        <button class="w-5 h-5 rounded-full border-2 border-gray-300 hover:border-indigo-500"></button>
-                    </div>
-                    <div class="col-span-5">
-                        <p class="font-medium">Send client report</p>
-                        <p class="text-xs text-gray-400 mt-1">Q2 performance metrics</p>
-                    </div>
-                    <div class="col-span-2 text-sm text-red-500 flex items-center gap-1">
-                        <i class="fas fa-exclamation-circle"></i> Yesterday
-                    </div>
-                    <div class="col-span-2">
-                        <span class="px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">Urgent</span>
-                    </div>
-                    <div class="col-span-2 flex space-x-3">
-                        <a href="/update-todo/3" class="text-indigo-600 hover:text-indigo-800">
-                            <i class="fas fa-pen"></i>
-                        </a>
-                        <button class="text-red-600 hover:text-red-800">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                        <button class="text-gray-500 hover:text-gray-700">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+               
+            
 
             <!-- Pagination -->
             <div class="bg-gray-50 px-4 py-3 flex items-center justify-between border-t border-gray-200">

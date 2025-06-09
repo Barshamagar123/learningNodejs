@@ -19,8 +19,10 @@ app.get("/",(request,response)=>{
 app.get("/add-todo",(request,response)=>{
     response.render("./todo/add-todo")
 })
-app.get("/gets-todo",(request,response)=>{
-response.render('./todo/gets-todo')
+app.get("/gets-todo",async(request,response)=>{
+  const datas = await db.adds.findAll()  //displayyyy 
+ 
+response.render('./todo/gets-todo',{todos : datas})
 })
 app.get("/update-todo",(request,response)=>{
 response.render('./todo/update-todo.ejs')
