@@ -40,23 +40,37 @@ if(password!==confirmPassword){
     return response.send("password and confirm password donot match")
 }
 await db.registers.create({
-
 firstname: firstName,
 lastname: lastName,
 email: email,
 password: bcrypt.hashSync(password,10),
-confirmpassword: bcrypt.hashSync(confirmPassword,10)
+// confirmpassword: bcrypt.hashSync(confirmPassword,10)
 
 })
 response.send("registered succesfully")
 })
 app.post("/login-todo",async(request,response)=>{
     const {email,password}=request.body
-    await db.logins.create({
-        email:email,
-        password: bcrypt.hashSync(password,10)
+    
+    const registers =  await db.registers.findAll({
+        where: {
+            email:email
+        }
     })
-    response.send("login succesfully")
+    console.log(registers)
+   if(registers.length==0){
+    response.send("not registered email")
+   }
+   else{
+    //now check password first ---> plain password(form bata aako), hashed password already register garda table ma baseko
+  const isPasswordMatch= bcrypt.compareSync(password,registers[0].password)
+  if(isPasswordMatch){
+    response.send("logged in succesfully")
+  }
+  else{
+    response.send("invalid credentails")
+  }
+   }
 })
 app.post("/add-todo",async(request,response)=>{
     const {task,description,date,priority,tag}=request.body
