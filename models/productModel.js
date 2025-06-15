@@ -1,6 +1,6 @@
 
 const makeProductTable=(sequelize,Datatypes)=>{
-const product=sequelize.define("products",{
+const product=sequelize.define("product",{
     name: {
         type: Datatypes.STRING
     },

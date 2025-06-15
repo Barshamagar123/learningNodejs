@@ -49,6 +49,30 @@ password: bcrypt.hashSync(password,10),
 })
 response.send("registered succesfully")
 })
+
+// app.post("/login-todo", async (request, response) => {
+//     const { email, password } = request.body
+//     // login logic --> check if email exists or not 
+//     const registers = await db.registers .findAll({
+//         where: {
+//             email: email
+//         }
+//     })
+
+//     // select * from users where email = "manish@gmail.com" AND age = 22
+
+//     if (registers.length == 0) { // email wala user vetena vane
+//         response.send("Not registered email")
+//     } else {
+//         // now check password, first --> plain password(form bata aako), hashed password already register garda table ma baseko 
+//         const isPasswordMatch = bcrypt.compareSync(password, registers[0].password)
+//         if (isPasswordMatch) {
+//             response.send("Logged in successfully")
+//         } else {
+//             response.send("Invalid credentials")
+//         }
+//     }
+// })
 app.post("/login-todo",async(request,response)=>{
     const {email,password}=request.body
     
@@ -57,15 +81,14 @@ app.post("/login-todo",async(request,response)=>{
             email:email
         }
     })
-    console.log(registers)
-   if(registers.length==0){
+   if(registers.length == 0){
     response.send("not registered email")
    }
    else{
     //now check password first ---> plain password(form bata aako), hashed password already register garda table ma baseko
-  const isPasswordMatch= bcrypt.compareSync(password,registers[0].password)
+  const isPasswordMatch= bcrypt.compareSync(password, registers[0].password)
   if(isPasswordMatch){
-    response.send("logged in succesfully")
+    response.render("home.ejs")
   }
   else{
     response.send("invalid credentails")
