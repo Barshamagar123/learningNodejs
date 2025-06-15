@@ -4,13 +4,13 @@ const db=require("./database/db")
 app.set("view engine", "ejs")//tells express js to set environment for ejs to run
 app.use(express.urlencoded({extended: true}))
 const bcrypt=require("bcrypt")
+const jwt=require("jsonwebtoken")
 // app.get("/",function(request, response){
 //     let name="barsha"
 //     response.render("home.ejs",{age : 23, name:"barsha"})
 //     // response.send("this is home page")
 // })
 // app.get("/about",function(request, response){
-
 //     response.render("about.ejs",{about: "about"})
 // })
 app.get("/",(request,response)=>{
@@ -49,30 +49,6 @@ password: bcrypt.hashSync(password,10),
 })
 response.send("registered succesfully")
 })
-
-// app.post("/login-todo", async (request, response) => {
-//     const { email, password } = request.body
-//     // login logic --> check if email exists or not 
-//     const registers = await db.registers .findAll({
-//         where: {
-//             email: email
-//         }
-//     })
-
-//     // select * from users where email = "manish@gmail.com" AND age = 22
-
-//     if (registers.length == 0) { // email wala user vetena vane
-//         response.send("Not registered email")
-//     } else {
-//         // now check password, first --> plain password(form bata aako), hashed password already register garda table ma baseko 
-//         const isPasswordMatch = bcrypt.compareSync(password, registers[0].password)
-//         if (isPasswordMatch) {
-//             response.send("Logged in successfully")
-//         } else {
-//             response.send("Invalid credentials")
-//         }
-//     }
-// })
 app.post("/login-todo",async(request,response)=>{
     const {email,password}=request.body
     
@@ -88,7 +64,12 @@ app.post("/login-todo",async(request,response)=>{
     //now check password first ---> plain password(form bata aako), hashed password already register garda table ma baseko
   const isPasswordMatch= bcrypt.compareSync(password, registers[0].password)
   if(isPasswordMatch){
-    response.render("home.ejs")
+    //token generation
+const token=jwt.sign({name: "barsha" },"thisismysecretkey",{
+    expiresIn:"20d"
+})
+response.cookie("token",token)
+    response.redirect("/")
   }
   else{
     response.send("invalid credentails")
