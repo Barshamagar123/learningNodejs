@@ -19,7 +19,7 @@ app.use(cookieParser())
 app.get("/",(request,response)=>{
     response.render("home.ejs")
 })
-app.get("/add-todo",isLogged, (request,response)=>{
+app.get("/add-todo", isLogged, (request,response)=>{
     response.render("./todo/add-todo")
 })
 app.get("/gets-todo",async(request,response)=>{
