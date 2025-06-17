@@ -5,6 +5,8 @@ app.set("view engine", "ejs")//tells express js to set environment for ejs to ru
 app.use(express.urlencoded({extended: true}))
 const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
+const isLogged = require("./middleware/islogged")
+const cookieParser=require("cookie-parser")
 // app.get("/",function(request, response){
 //     let name="barsha"
 //     response.render("home.ejs",{age : 23, name:"barsha"})
@@ -13,10 +15,11 @@ const jwt=require("jsonwebtoken")
 // app.get("/about",function(request, response){
 //     response.render("about.ejs",{about: "about"})
 // })
+app.use(cookieParser())
 app.get("/",(request,response)=>{
     response.render("home.ejs")
 })
-app.get("/add-todo",(request,response)=>{
+app.get("/add-todo",isLogged, (request,response)=>{
     response.render("./todo/add-todo")
 })
 app.get("/gets-todo",async(request,response)=>{
@@ -51,7 +54,6 @@ response.send("registered succesfully")
 })
 app.post("/login-todo",async(request,response)=>{
     const {email,password}=request.body
-    
     const registers =  await db.registers.findAll({
         where: {
             email:email
@@ -65,8 +67,9 @@ app.post("/login-todo",async(request,response)=>{
   const isPasswordMatch= bcrypt.compareSync(password, registers[0].password)
   if(isPasswordMatch){
     //token generation
-const token=jwt.sign({name: "barsha" },"thisismysecretkey",{
+const token=jwt.sign({id: registers[0].id },"thisismysecretkey",{
     expiresIn:"20d"
+
 })
 response.cookie("token",token)
     response.redirect("/")
@@ -74,9 +77,9 @@ response.cookie("token",token)
   else{
     response.send("invalid credentails")
   }
-   }
+}
 })
-app.post("/add-todo",async(request,response)=>{
+app.post("/add-todo",isLogged, async(request,response)=>{
     const {task,description,date,priority,tag}=request.body
     await db.adds.create({
         task: task,
