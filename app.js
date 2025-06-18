@@ -101,6 +101,15 @@ app.post("/add-todo",isLogged, async(request,response)=>{
     })
     response.render("home.ejs")
 })
+app.get("/delete/:id",async (request,response)=>{
+const id=request.params.id // :id vayeko le params ma ni id hunxa
+await db.adds.destroy({
+    where:{
+        id:id
+    }
+})
+response.render("home.ejs")
+})
 app.listen(3000,function(){
     console.log("backend has starated at port 3000")
 })
