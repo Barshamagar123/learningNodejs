@@ -22,11 +22,20 @@ app.get("/",(request,response)=>{
 app.get("/add-todo", isLogged, (request,response)=>{
     response.render("./todo/add-todo")
 })
-app.get("/gets-todo",async(request,response)=>{
-  const datas = await db.adds.findAll()  //displayyyy 
- 
+// app.get("/gets-todo",async(request,response)=>{
+//   const datas = await db.adds.findAll()  //displayyyy 
+// response.render('./todo/gets-todo',{todos : datas})
+// })
+app.get("/gets-todo",isLogged, async(request,response)=>{
+    const registerId= request.registerId
+  const datas = await db.adds.findAll({
+    where:{
+        registerId: registerId
+    }
+  })  //displayyyy 
 response.render('./todo/gets-todo',{todos : datas})
 })
+
 app.get("/update-todo",(request,response)=>{
 response.render('./todo/update-todo.ejs')
 })
@@ -80,13 +89,15 @@ response.cookie("token",token)
 }
 })
 app.post("/add-todo",isLogged, async(request,response)=>{
+   const registerId= request.registerId
     const {task,description,date,priority,tag}=request.body
     await db.adds.create({
         task: task,
         description:description,
         date:date,
         priority: priority,
-        tag: tag
+        tag: tag,
+        registerId: registerId
     })
     response.render("home.ejs")
 })

@@ -12,7 +12,7 @@ const isLogged=(request,response,next)=>{
                 }
                 else{
                     request.registerId=result.id
-                    console.log(result)
+                    // console.log(result)
                     next()
                 }
             }
