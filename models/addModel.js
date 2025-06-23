@@ -13,6 +13,10 @@ makeAddTable=(sequelize,Datatypes)=>{
             type: Datatypes.ENUM("Low","Medium","High"),
             defaultValue: "Low"
         },
+        status:{
+            type:Datatypes.ENUM("completed","pending"),
+            defaultValue: "pending"
+        },
         tag:{
             type: Datatypes.STRING
         },

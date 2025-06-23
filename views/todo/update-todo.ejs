@@ -21,12 +21,12 @@
         </header>
 
         <!-- Form -->
-        <form class="bg-white p-6 rounded-xl shadow">
+        <form class="bg-white p-6 rounded-xl shadow" method="post" action="/update-todo/<%- adds[0].id %>">
             <div class="space-y-5">
                 <!-- Task Title -->
                 <div>
                     <label class="block text-gray-700 mb-2 font-medium">Task Title*</label>
-                    <input type="text" value="Review team tasks" 
+                    <input type="text" name="task" value="<%- adds[0].task %>" 
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                         required>
                 </div>
@@ -34,7 +34,7 @@
                 <!-- Description -->
                 <div>
                     <label class="block text-gray-700 mb-2 font-medium">Description</label>
-                    <textarea rows="3" 
+                    <textarea rows="3" name="description" value="<%- adds[0].description %>"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">Discuss the upcoming project milestones and assign tasks to team members.</textarea>
                 </div>
 
@@ -42,41 +42,29 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                         <label class="block text-gray-700 mb-2 font-medium">Due Date*</label>
-                        <input type="datetime-local" value="2023-12-15T10:00" 
+                        <input type="date" name="date" value="<%- adds[0].date %>" 
                             class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
                             required>
                     </div>
                     <div>
+                        <label class="block text-gray-700 mb-2 font-medium">Status</label>
+                        <select name="status" value="<%- adds[0].status %>"class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                            <option>Pending</option>
+                            <option>Completed</option>
+                        </select>
+                        </div>
+                    <div>
+                    
                         <label class="block text-gray-700 mb-2 font-medium">Priority*</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                        <select name="priority" value="<%- adds[0].priority %>"class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
                             <option>Low</option>
                             <option selected>Medium</option>
                             <option>High</option>
-                            <option>Urgent</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Status & Category -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                        <label class="block text-gray-700 mb-2 font-medium">Status</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                            <option>Pending</option>
-                            <option>In Progress</option>
-                            <option>Completed</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2 font-medium">Category</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
-                            <option>Work</option>
-                            <option>Personal</option>
-                            <option>Study</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                </div>
+               
 
                 <!-- Buttons -->
                 <div class="flex flex-col sm:flex-row gap-3 pt-5">

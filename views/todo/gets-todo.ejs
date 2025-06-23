@@ -47,8 +47,8 @@
                 <div class="col-span-1">Status</div>
                 <div class="col-span-5">Task</div>
                 <div class="col-span-2">Due Date</div>
+                <div class="col-span-2">status</div>
                 <div class="col-span-2">Priority</div>
-                <div class="col-span-2">Actions</div>
             </div>
                      <% todos.forEach(function(add){ %>
                 <!-- Pending Task -->
@@ -61,12 +61,23 @@
                         <p class="font-medium"><%- add.task %></p>
                         <p class="text-xs text-gray-400 mt-1"><%- add.description %></p>
                     </div>
-                    <div class="col-span-2 text-sm text-gray-500"><% add.date %></div>
+                    <div class="col-span-5">
+                        <p class="font-medium"><%- add.date %></p>
+                    </div>
+                    <div class="col-span-5"></div>
+                     <p class="font-medium"><%- add.status %></p>
+                    </div>
+                     <div class="col-span-5"></div>
+                       <p class="font-medium"><%- add.priority %></p>
+                    </div>
                     <div class="col-span-2">
-                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Medium</span>
+                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium"><%- add.priority %></span>
+                    </div>
+                    <div class="col-span-2">
+                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium"><%- add.status %></span>
                     </div>
                     <div class="col-span-2 flex space-x-3">
-                        <a href="/update-todo" class="text-indigo-600 hover:text-indigo-800">
+                        <a href="/update-todo/<%- add.id %>" class="text-indigo-600 hover:text-indigo-800">
                             <i class="fas fa-pen"></i>
                         </a>
                        <a href="/delete/<%- add.id  %>"> <button class="text-red-600 hover:text-red-800">

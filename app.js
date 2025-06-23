@@ -36,8 +36,20 @@ app.get("/gets-todo",isLogged, async(request,response)=>{
 response.render('./todo/gets-todo',{todos : datas})
 })
 
-app.get("/update-todo",(request,response)=>{
-response.render('./todo/update-todo.ejs')
+app.get("/update-todo/:id",async (request,response)=>{
+    const id=request.params.id
+    const adds = await db.adds.findAll({
+        where:{
+            id:id
+        }
+    })
+    /*
+    id=7[{
+    id:7,
+    title: "test",
+    description: "dsks"}]
+    */
+response.render('./todo/update-todo.ejs',{adds: adds})
 })
 app.get("/login-todo",(request,response)=>{
 response.render('./authentication/login.ejs')
@@ -109,6 +121,22 @@ await db.adds.destroy({
     }
 })
 response.render("home.ejs")
+})
+app.post("/update-todo/:id",async (request,response)=>{
+    const id=request.params.id
+    const {task,description,date,status,priority}=request.body
+   await db.adds.update({
+        task:task,
+        description:description,
+        date:date,
+        status:status,
+        priority:priority
+   },{
+    where:{
+    id:id
+    }
+    })
+    response.redirect("/")
 })
 app.listen(3000,function(){
     console.log("backend has starated at port 3000")

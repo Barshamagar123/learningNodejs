@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-indigo-700 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo/Brand -->
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    <span class="text-white text-xl font-bold">Todo App</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-white px-3 py-2 rounded-md text-sm font-medium bg-indigo-800">Home</a>
+                    <a href="/gets-todo" class="text-indigo-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Tasks</a>
+                    <a href="/add-todo" class="text-indigo-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Add Task</a>
+                    <a href="#" class="text-indigo-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Profile</a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-white hover:text-gray-300 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="/login-todo" class="text-indigo-100 hover:text-white text-sm font-medium">Login</a>
+                    <a href="/register-todo" class="bg-white text-indigo-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Register</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (hidden by default) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/" class="bg-indigo-800 text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="/gets-todo" class="text-indigo-100 hover:bg-indigo-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium">My Tasks</a>
+                <a href="/add-todo" class="text-indigo-100 hover:bg-indigo-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Add Task</a>
+                <a href="#" class="text-indigo-100 hover:bg-indigo-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Profile</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-indigo-800">
+                <div class="px-5 flex items-center justify-between">
+                    <a href="/login-todo" class="text-indigo-100 hover:text-white text-sm font-medium">Login</a>
+                    <a href="/register-todo" class="bg-white text-indigo-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Your existing content -->
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Header -->
+        <header class="mb-10">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-4xl font-bold text-indigo-700 mb-2">Todo App</h1>
+                    <p class="text-gray-600">Manage your tasks efficiently</p>
+                </div>
+                <div class="flex gap-3">
+                    <a href="/login-todo" class="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium">
+                        Login
+                    </a>
+                    <a href="/register-todo" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium">
+                        Register
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Rest of your content... -->
+    </div>
+
+    <script>
+        // Simple mobile menu toggle
+        document.querySelector('nav button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
